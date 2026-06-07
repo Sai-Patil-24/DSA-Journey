@@ -3,7 +3,7 @@
 // 3. Time complexity: O(n + k log k), Space complexity: O(n + k)
 // 4. Link of this problem: https://leetcode.com/problems/sort-characters-by-frequency/
 // 5. Approach: Count each character frequency, sort unique characters by frequency, then build the result string by repeating each character.
-
+// 6. Approach Type:optimized 
 class Solution {
 public:
     string frequencySort(string s) {
