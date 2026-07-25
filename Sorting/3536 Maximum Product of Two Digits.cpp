@@ -32,3 +32,40 @@ public:
         return nums[s - 1] * nums[s - 2];
     }
 };
+
+/*
+ * LeetCode Problem: Maximum Product of Two Digits
+ * Link: https://leetcode.com/problems/maximum-product-of-two-digits/
+ *
+ * Approach:
+ * - Traverse the digits once while tracking the largest and second largest digit.
+ * - Update both values as each digit is processed.
+ * - Return the product of the two largest digits.
+ *
+ * Time Complexity: O(d)
+ * Space Complexity: O(1)
+ * where d is the number of digits.
+ */
+
+ class Solution {
+public:
+    int maxProduct(int n) {
+        int first = -1;
+        int second = -1;
+
+        while (n > 0) {
+            int digit = n % 10;
+
+            if (digit > first) {
+                second = first;
+                first = digit;
+            } else if (digit > second) {
+                second = digit;
+            }
+
+            n /= 10;
+        }
+
+        return first * second;
+    }
+};
