@@ -10,35 +10,46 @@
 //    - Otherwise, consider only unique elements that are present at the first or last position
 //    - Return the largest valid element, or -1 if no valid element exists
 // 7. Type: Hash Map + Frequency Counting
-class Solution {
+class Solution
+{
 public:
-    int largestInteger(vector<int>& nums, int k) {
+    int largestInteger(vector<int> &nums, int k)
+    {
         unordered_map<int, int> mpp;
 
-        for (int it : nums) {
+        for (int it : nums)
+        {
             mpp[it]++;
         }
 
         int ans = -1;
 
-        if (k == nums.size()) {
-            for (int it : nums) {
+        if (k == nums.size())
+        {
+            for (int it : nums)
+            {
                 ans = max(ans, it);
             }
         }
-        else if (k == 1) {
-            for (auto& it : mpp) {
-                if (it.second == 1) {
+        else if (k == 1)
+        {
+            for (auto &it : mpp)
+            {
+                if (it.second == 1)
+                {
                     ans = max(ans, it.first);
                 }
             }
         }
-        else {
-            for (auto& it : mpp) {
+        else
+        {
+            for (auto &it : mpp)
+            {
                 int num = it.first;
                 int cnt = it.second;
 
-                if (cnt == 1 && (num == nums[0] || num == nums[nums.size() - 1])) {
+                if (cnt == 1 && (num == nums[0] || num == nums[nums.size() - 1]))
+                {
                     ans = max(ans, num);
                 }
             }
