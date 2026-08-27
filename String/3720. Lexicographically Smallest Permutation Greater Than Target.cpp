@@ -55,3 +55,57 @@ public:
         return result;
     }
 };
+
+
+//Better Approach
+class Solution {
+public:
+    string ans;
+
+    bool solve(string &target, vector<int> &cnt, string &curr, int i, bool greater) {
+        int n = target.size();
+
+        if (i == n) {
+            return greater;
+        }
+
+        for (int c = 0; c < 26; c++) {
+            if (cnt[c] == 0) continue;
+
+            char ch = 'a' + c;
+
+           
+            if (!greater && ch < target[i])
+                continue;
+
+            cnt[c]--;
+            curr.push_back(ch);
+
+            bool newGreater = greater || (ch > target[i]);
+
+            if (solve(target, cnt, curr, i + 1, newGreater)) {
+                return true;
+            }
+
+            curr.pop_back();
+            cnt[c]++;
+        }
+
+        return false;
+    }
+
+    string lexGreaterPermutation(string s, string target) {
+        vector<int> cnt(26, 0);
+
+        for (char ch : s) {
+            cnt[ch - 'a']++;
+        }
+
+        string curr;
+
+        if (solve(target, cnt, curr, 0, false))
+            return curr;
+
+        return "";
+    }
+};
