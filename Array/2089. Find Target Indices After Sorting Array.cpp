@@ -47,3 +47,24 @@ public:
         return sol;
     }
 };
+
+//optimized solution
+class Solution {
+public:
+    vector<int> targetIndices(vector<int>& nums, int target) {
+        int less_than = 0;
+        int count = 0;
+
+        for (int x : nums) {
+            if (x < target) less_than++;
+            else if (x == target) count++;
+        }
+
+        vector<int> sol;
+        for (int i = 0; i < count; i++) {
+            sol.push_back(less_than + i);
+        }
+
+        return sol;
+    }
+};
