@@ -1,7 +1,6 @@
 class Solution {
 public:
-    void combination(int index, vector<int>& candidates, int sum, int target,
-                     vector<vector<int>>& result, int n, vector<int>& current) {
+    void combination(int index, vector<int>& candidates, int sum, int target,vector<vector<int>>& result, int n, vector<int>& current) {
         if (index == n) {
             if (sum == target) {
                 if (find(result.begin(), result.end(), current) ==
